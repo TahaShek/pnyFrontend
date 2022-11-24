@@ -1,0 +1,58 @@
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Cinzel' !important;
+  
+  }
+  .banner-image {
+  
+      background:linear-gradient(to bottom,rgba(50,60,57,-0.3),rgba(9,30,62,.5)),url('../../../../assets/hero-image.avif');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+  
+    }
+    .about{
+      background-color: rgb(38,32,30);
+      border: 4px solid;
+    }
+  
+    .gym-image{
+      background: url('../../../../assets/gym.jpg');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;
+      font-family: 'Cinzel' !important;
+      /* background-attachment: fixed; */
+    }
+    
+    .i{
+      height: 100%;
+      width: 100%;
+    }
+  
+  
+    .mind{
+      background-color: rgb(13,7,5);
+      color: white;
+    }
+  
+    .learnMore{
+      border: 9px solid white;
+    }
+  
+  
+    
+  
+    .tesimonal{
+      background-color: rgb(38,32,30);
+      height: 100vh;
+    }
+    p{
+      font-family: 'Nanum Myeongjo';
+  
+    }
+    button{
+      font-family: 'Nanum Myeongjo';
+  
+    }

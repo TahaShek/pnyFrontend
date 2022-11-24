@@ -1,0 +1,19 @@
+*{
+    font-family: 'Nanum Myeongjo';
+}
+
+
+.header_change{
+    /* position: fixed; */
+    background:rgb(13,7,5);
+    width: 100%;
+    z-index: 1;
+    top:0;
+    left: 0;
+  
+  }
+  .navbar-brand{
+  font-family: 'Cinzel' !important;
+
+  }
+  
