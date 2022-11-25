@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl,  FormGroup, Validators } from '@angular/forms';
-import { an } from 'chart.js/dist/chunks/helpers.core';
+import { ToastrService } from 'ngx-toastr';
+// import { an } from 'chart.js/dist/chunks/helpers.core';
 
 @Component({
   selector: 'app-product-creation',
@@ -13,10 +14,11 @@ category=['Protien Shakes','protien Bar']
 newSizeArray:any=[]
 newImageArray:any=[]
 button:boolean=true
+@ViewChild('fileSelect') fileSelect:ElementRef|any
 // disablebtn:boolean=true
 
 ProductCreateForm:FormGroup|any
-  constructor(private formbuilder:FormBuilder) {
+  constructor(private formbuilder:FormBuilder,private toaster:ToastrService) {
     this.FormModel()
    }
 
@@ -54,7 +56,8 @@ getImages(event:any){
   }
   else{
     this.newImageArray=[]
-    alert(`limit is five you have selected ${fielsLength}`)
+    this.toaster.error(`limit is five you have selected ${fielsLength}`)
+    this.fileSelect.nativeElement.value=null
     
   }
 }
