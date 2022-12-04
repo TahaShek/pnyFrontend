@@ -15,11 +15,11 @@
         </div>
         <div class="col-lg-6">
             <div class="group">      
-                <input type="text" class="i" formControlName="productQuantity" required>
+                <input type="text" class="i" formControlName="Quantity" required>
                 <span class="highlight"></span>
                 <span class="bar"></span>
                 <label>Product Quantity</label>
-                <p class="text-danger" *ngIf="productQuantity && productQuantity.invalid && productQuantity.touched">This filed is required </p>
+                <p class="text-danger" *ngIf="Quantity && Quantity.invalid && Quantity.touched">This filed is required </p>
 
             </div>
         </div>
@@ -69,7 +69,7 @@
              
             <div class="mb-3 mx-5">
              <ng-container *ngFor="let item of SelectSize">
-                <input class="form-check-input" type="checkbox" [id]="item"  [name]="item" [value]="item" (click)="getSize($event)" id="flexCheckDefault">     
+                <input #checkbox class="form-check-input" type="checkbox" [id]="item"  [name]="item" [value]="item" (click)="getSize($event)" id="flexCheckDefault">     
                 <label class="form-check-label mx-2 " [for]="item">{{item}}</label>
              </ng-container>
               </div>

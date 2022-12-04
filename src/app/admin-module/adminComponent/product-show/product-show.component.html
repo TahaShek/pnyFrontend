@@ -1,0 +1,57 @@
+<!-- <div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let data of product">
+            <div class="card">
+                <div class="card-body">
+                    
+                        <img [src]="Url+data.ImageDetail[0].ImageUrl" class="img-fluid image-on-top" alt="">
+                    
+                    <div class="card-title">
+                        <h1>{{data.productName}}</h1>
+                    </div>
+                    <div class="card-text">
+                        <p>{{data.price}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+
+
+
+<section class="section-products">
+    <div class="container">
+            <div class="row justify-content-center text-center">
+                    <div class="col-md-8 col-lg-6" >
+                            <div class="header">
+                                    <h3>Featured Product</h3>
+                                    <h2>Popular Products</h2>
+                            </div>
+                    </div>
+            </div>
+            <div class="row">
+                    <!-- Single Product -->
+                    <div class="col-md-6 col-lg-4 col-xl-3" *ngFor="let data of product">
+                            <div id="product-1" class="single-product">
+                                    <div class="part-1">
+                                        <img [src]="Url+data.ImageDetail[0].ImageUrl" class="img-fluid" alt="">
+                                            <ul>
+                                                    <li><a href="#"><i class="fas bi-shopping-cart"></i></a></li>
+                                                    <li><a href="#"><i class="fas fa-heart"></i></a></li>
+                                                    <li><a href="#"><i class="fas fa-plus"></i></a></li>
+                                                    <li><a href="#"><i class="fas fa-expand"></i></a></li>
+                                            </ul>
+                                    </div>
+                                    <div class="part-2">
+                                            <h3 class="product-title">{{data.productName}}</h3>
+                                            <h4 class="product-old-price">$79.99</h4>
+                                            <h4 class="product-price">{{data.price | currency}}</h4>
+                                    </div>
+                            </div>
+                    </div>
+       
+            </div>
+    </div>
+</section>

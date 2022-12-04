@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { FormArray, FormBuilder, FormControl,  FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { ProductService } from 'src/app/Shared/Service/product.service';
 // import { an } from 'chart.js/dist/chunks/helpers.core';
 
 @Component({
@@ -15,10 +16,23 @@ newSizeArray:any=[]
 newImageArray:any=[]
 button:boolean=true
 @ViewChild('fileSelect') fileSelect:ElementRef|any
+@ViewChildren('checkbox') checkbox:QueryList<ElementRef> | undefined;
 // disablebtn:boolean=true
+// unselect(){
+//   this.checkbox.forEach((element:any) => {
+    // element.nativeElement.checked=false
+    
+//   });
+// }
+slect(){
+  this.checkbox?.forEach((element)=>{
+    element.nativeElement.checked=false
+
+  })
+}
 
 ProductCreateForm:FormGroup|any
-  constructor(private formbuilder:FormBuilder,private toaster:ToastrService) {
+  constructor(private formbuilder:FormBuilder,private toaster:ToastrService,private ProductService:ProductService) {
     this.FormModel()
    }
 
@@ -27,7 +41,7 @@ ProductCreateForm:FormGroup|any
 FormModel(){
   this.ProductCreateForm=this.formbuilder.group({
  productName:new FormControl('',[Validators.required,Validators.minLength(6)]),
- productQuantity:new FormControl('',[Validators.required,]),
+Quantity:new FormControl('',[Validators.required,]),
  flavour:new FormControl('',[Validators.required,Validators.minLength(6)]),
  price:new FormControl('',[Validators.required,Validators.pattern(/^[0-9]*$/)]),
  description:new FormControl('',[Validators.required,Validators.minLength(25)]),
@@ -50,14 +64,13 @@ else{
 getImages(event:any){
   let fielsLength=event.target.files.length;
   if(event.target.files.length<=5){
-    [...event.target.files].forEach((element:any) => {
-      this.newImageArray.push(element)
-    });
+    [...event.target.files].forEach(element => this.newImageArray.push(element) );
   }
   else{
     this.newImageArray=[]
     this.toaster.error(`limit is five you have selected ${fielsLength}`)
     this.fileSelect.nativeElement.value=null
+    
     
   }
 }
@@ -73,16 +86,38 @@ submitForm(){
 let MultipartFormData=new FormData();
 MultipartFormData.append('productName',this.ProductCreateForm.get('productName').value)
 
-    MultipartFormData.append(' productQuantity', this.ProductCreateForm.get('productQuantity').value);
+    MultipartFormData.append('Quantity', this.ProductCreateForm.get('Quantity').value);
     MultipartFormData.append('price', this.ProductCreateForm.get('price').value);
     MultipartFormData.append('description', this.ProductCreateForm.get('description').value);
     MultipartFormData.append('flavour', this.ProductCreateForm.get('flavour').value);
     MultipartFormData.append('categories', this.ProductCreateForm.get('categories').value);
     MultipartFormData.append('size', this.ProductCreateForm.get('size').value);
     
-    this.newImageArray.forEach((images:any)=>{
-  MultipartFormData.append('images',images)
+    this.newImageArray.forEach((imagedata:any)=>{
+  MultipartFormData.append('images',imagedata)
     })
+    let formvalue=this.ProductCreateForm.value
+
+this.ProductService.CreateApi(MultipartFormData).subscribe((res:any)=>{
+  this.toaster.success(res.message)
+  let productSize=this.ProductCreateForm.get('size')
+  productSize.clear()
+  this.ProductCreateForm.reset()
+  this.newSizeArray=[ ]
+  this.slect()
+  // this.checkbox?.forEach((element)=>{
+  //   element.nativeElement.checked = false;
+
+  // })
+  // this.unselect()
+  this.fileSelect.nativeElement.value=null
+  this.newImageArray=[]
+
+
+})    
+
+
+    // this.newSizeArray=['']
 
 }
 
@@ -93,8 +128,8 @@ get productName(){
   return this.ProductCreateForm.get('productName')
 }
 
-get productQuantity(){
-  return this.ProductCreateForm.get('productQuantity')
+get Quantity(){
+  return this.ProductCreateForm.get('Quantity')
 }
 get flavour(){
   return this.ProductCreateForm.get('flavour')
