@@ -84,8 +84,7 @@ submitForm(){
   });
 
 let MultipartFormData=new FormData();
-MultipartFormData.append('productName',this.ProductCreateForm.get('productName').value)
-
+    MultipartFormData.append('productName',this.ProductCreateForm.get('productName').value)
     MultipartFormData.append('Quantity', this.ProductCreateForm.get('Quantity').value);
     MultipartFormData.append('price', this.ProductCreateForm.get('price').value);
     MultipartFormData.append('description', this.ProductCreateForm.get('description').value);

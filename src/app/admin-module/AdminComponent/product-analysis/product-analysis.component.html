@@ -1,0 +1,40 @@
+<div class="container  mt-5 ">
+    <div class="row ">
+          <div class="text-center">
+            <h1>Product Analytics</h1>
+          </div>
+        <div>
+            <table class="table">
+                <thead>
+                  <tr >
+                    <th scope="col">#</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Status Summary</th>
+                    <th scope="col">Price </th>
+                    <th scope="col">Categories</th>
+                    <th scope="col" colspan="4">Actions</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let data of product let i=index" >
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{data.productName}}</td>
+                    <td><img [src]="Url+data.ImageDetail[0].ImageUrl" class="" width="50px" alt=""></td>
+                    <td [ngClass]="data.status === 1 ? 'text-primary' : 'text-danger'">{{data.status}}</td>
+                    <td [ngClass]="data.status===1? 'text-info':'text-danger'">{{data.status=== 1? 'in stock':'out of stock'}}</td>
+                    <td>{{data.price | currency}}</td>
+                    <td>{{data.categories}}</td>
+                    <td class="bi bi-eye text-info"></td>
+                    <td class="bi bi-pencil text-info   "></td>
+                    <td class="bi bi-trash text-danger   " (click)="HardDelete(data._id)"></td>
+                    <td> <button class="btn btn-outline-danger" (click)="softDelete(data._id)">Soft Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+    
+</div>

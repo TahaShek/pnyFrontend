@@ -8,6 +8,7 @@ import { DashboardComponent } from './AdminComponent/dashboard/dashboard.compone
 import { ProductCreationComponent } from './AdminComponent/product-creation/product-creation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductShowComponent } from './adminComponent/product-show/product-show.component';
+import { ProductAnalysisComponent } from './AdminComponent/product-analysis/product-analysis.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProductShowComponent } from './adminComponent/product-show/product-show
     AdminModuleComponent,
     DashboardComponent,
     ProductCreationComponent,
-    ProductShowComponent
+    ProductShowComponent,
+    ProductAnalysisComponent
   ],
   imports: [
     CommonModule,
