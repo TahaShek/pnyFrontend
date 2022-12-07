@@ -20,9 +20,19 @@ export class ProductService {
        return this.http.delete(`http://localhost:1111/ProductDataToDatabase/SoftDelete/${_id}`)
    }
 
-
-
    HardDelete(_id:any){
     return this.http.delete(`http://localhost:1111/ProductDataToDatabase/HardDelete/${_id}`)
 }
+GetParticularDataByid(_id:any){
+  return this.http.get(`http://localhost:1111/ProductDataToDatabase/GetParticularProductData/${_id}`)
+
 }
+
+UpdateProductData(payload:any){
+
+return this.http.post(`http://localhost:1111/ProductDataToDatabase/UpdateProductById`,payload)
+
+}
+
+}
+// UpdateProductById

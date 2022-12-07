@@ -28,7 +28,7 @@
                     <td>{{data.price | currency}}</td>
                     <td>{{data.categories}}</td>
                     <td class="bi bi-eye text-info"></td>
-                    <td class="bi bi-pencil text-info   "></td>
+                    <td class="bi bi-pencil text-info" (click)="getData(data._id)" data-bs-toggle="modal" data-bs-target="#exampleModal"></td>
                     <td class="bi bi-trash text-danger   " (click)="HardDelete(data._id)"></td>
                     <td> <button class="btn btn-outline-danger" (click)="softDelete(data._id)">Soft Delete</button></td>
                   </tr>
@@ -38,3 +38,140 @@
     </div>
     
 </div>
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<form [formGroup]="UpdateForm" (ngSubmit)="updateSubmit()" >
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen	">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Form</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label for="" class="form-label">Product Name</label>
+                <input type="text" class="form-control" name="" id="" formControlName="productName">
+            
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label for="" class="form-label">Product Quantity</label>
+                <input type="text" class="form-control" name="" id="" formControlName="Quantity">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label for="" class="form-label">Price</label>
+                <input type="number" class="form-control" name="" id="" formControlName="price">
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <div class="mb-3">
+                <label for="" class="form-label">Flavour</label>
+                <input type="text" class="form-control" name="" id="" formControlName="flavour">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="mb-3">
+                <label for="" class="form-label">Description</label>
+                <textarea class="form-control" name="" id="" formControlName="description" rows="3"></textarea>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="row">
+              <div class="col-lg-6">
+                  <div class="group">      
+                      <input type="text" class="i" formControlName="productName" required>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Product Name</label>
+                 
+                  </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="group">      
+                      <input type="text" class="i" formControlName="Quantity" required>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Product Quantity</label>
+                
+      
+                  </div>
+              </div>
+          </div>
+                  
+         
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="group">      
+                      <input type="text" class="i" formControlName="flavour" required>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Flavours</label>
+             
+      
+                  </div>
+              </div>
+      
+              <div class="col-lg-6">
+                  <div class="group">      
+                      <input type="number" class="i" required formControlName="price">
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+                      <label>Price</label>
+             
+      
+                  </div>
+              </div>
+          </div>
+      
+          <div class="row">
+              <div class="col-lg-6">
+                  <div class="group">      
+                      <div class="mb-3">
+                        <label for="" class="form-label">Description</label>
+                        <textarea class="form-control"  name="" id="" rows="3" formControlName="description"></textarea>
+                      </div>
+                      <span class="highlight"></span>
+                      <span class="bar"></span>
+           
+                      
+                  </div>
+              </div>
+             
+          </div>
+           -->
+    
+          
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
