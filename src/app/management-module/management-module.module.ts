@@ -5,6 +5,7 @@ import { ManagementModuleRoutingModule } from './management-module-routing.modul
 import { ManagementModuleComponent } from './management-module.component';
 import { LoginComponent } from './ManagementComponent/login/login.component';
 import { RegisterComponent } from './ManagementComponent/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { RegisterComponent } from './ManagementComponent/register/register.compo
   ],
   imports: [
     CommonModule,
-    ManagementModuleRoutingModule
+    ManagementModuleRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ManagementModuleModule { }

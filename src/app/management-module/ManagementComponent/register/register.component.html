@@ -1,1 +1,38 @@
-<p>register works!</p>
+<div class="container mt-5">
+    <form class="row g-3" [formGroup]="RegisterForm" (ngSubmit)="UserSubmit()">
+        <div class="col-md-6">
+
+            <label for="inputAddress" class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName">
+        </div>
+        <div class="col-md-6">
+            <label for="inputAddress2" class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName">
+            
+            
+        </div>
+        <div class="col-12">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+        </div>
+        <div class="col-12">
+            <label for="inputPassword4" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+        </div>
+  
+
+ 
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+      <div>
+        <p>
+            <a routerLink="../login">login here</a>
+        </p>
+      </div>
+</div>
+
+
+
