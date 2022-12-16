@@ -4,6 +4,7 @@ import { MainModuleComponent } from './main-module.component';
 import { BlogComponent } from './MainComponent/blog/blog.component';
 import { ContactComponent } from './MainComponent/contact/contact.component';
 import { HomeComponent } from './MainComponent/home/home.component';
+import { ProductDetailComponent } from './MainComponent/product-detail/product-detail.component';
 import { ShopComponent } from './MainComponent/shop/shop.component';
 
 const routes: Routes = [{ path: '', component: MainModuleComponent,children:[
@@ -11,7 +12,8 @@ const routes: Routes = [{ path: '', component: MainModuleComponent,children:[
   {path:'home',component:HomeComponent},
   {path:'blog',component:BlogComponent},
   {path:'contact',component:ContactComponent},
-  {path:'shop',component:ShopComponent}
+  {path:'shop',component:ShopComponent},
+  {path:'detail/:id',component:ProductDetailComponent}
 ] }];
 
 @NgModule({

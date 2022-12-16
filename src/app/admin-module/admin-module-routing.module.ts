@@ -7,6 +7,7 @@ import { ProductCreationComponent } from './AdminComponent/product-creation/prod
 import { ProductShowComponent } from './adminComponent/product-show/product-show.component';
 
 const routes: Routes = [{ path: '', component: AdminModuleComponent,children:[
+  {path:'',component:DashboardComponent},
   {path:'dash',component:DashboardComponent},
   {path:'procuctForm',component:ProductCreationComponent},
   {path:'productshow',component:ProductShowComponent},

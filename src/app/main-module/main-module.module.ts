@@ -10,6 +10,7 @@ import { HomeComponent } from './MainComponent/home/home.component';
 import { BlogComponent } from './MainComponent/blog/blog.component';
 import { ShopComponent } from './MainComponent/shop/shop.component';
 import { ContactComponent } from './MainComponent/contact/contact.component';
+import { ProductDetailComponent } from './MainComponent/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ContactComponent } from './MainComponent/contact/contact.component';
     HomeComponent,
     BlogComponent,
     ShopComponent,
-    ContactComponent
+    ContactComponent,
+    ProductDetailComponent
   ],
   imports: [
     CommonModule,

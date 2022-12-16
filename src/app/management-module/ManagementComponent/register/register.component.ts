@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { UserManagementService } from 'src/app/Shared/Service/user-management.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +13,14 @@ export class RegisterComponent implements OnInit {
   RegisterForm:FormGroup|any
 
 
-  constructor(private FormBUilder:FormBuilder,) { }
+  constructor(
+    private FormBUilder:FormBuilder,
+    private registerService:UserManagementService,
+   private toaster:ToastrService
+    ) 
+    {
+this.UserFormModel()
+    }
 
   ngOnInit(): void {
   }
@@ -27,7 +36,12 @@ export class RegisterComponent implements OnInit {
 
 
   UserSubmit(){
-
+    let userFormValues=this.RegisterForm.value
+this.registerService.UserRegistration(userFormValues).subscribe((res:any)=>{
+  res;
+this.toaster.success(res.message)
+})
+this.RegisterForm.reset()
   }
 
 }

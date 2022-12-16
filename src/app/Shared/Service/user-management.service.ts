@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,20 @@ import { Injectable } from '@angular/core';
 })
 export class UserManagementService {
 
-  constructor() { }
+  constructor(private readonly http:HttpClient) { }
+
+  UserRegistration(payload:any){
+    return this.http.post(`http://localhost:1111/UserRegistration/UserRegister`,payload)
+  }
+  UserLogin(payload:any){
+    return  this.http.post(`http://localhost:1111/UserRegistration/UserLogin`,payload)
+  }
+
+  setTokenStorage(payload:any){
+    localStorage.setItem('accessToken',payload)
+  }
+
+  checkUserLogin(){
+    return localStorage.getItem('accessToken')!==null
+  }
 }

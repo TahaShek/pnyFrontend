@@ -1,13 +1,13 @@
 <div class="container mt-5">
     <div class="row">
-        <form>
+        <form [formGroup]="LoginForm" (ngSubmit)="SubmitForm()">
         <div class="mb-3">
             <label for="formGroupExampleInput" class="form-label">Email</label>
-            <input type="email" class="form-control"  placeholder="email">
+            <input type="email" class="form-control"  placeholder="email" formControlName="email">
           </div>
           <div class="mb-3">
             <label for="formGroupExampleInput2" class="form-label">Password</label>
-            <input type="password" class="form-control" placeholder="password">
+            <input type="password" class="form-control" placeholder="password" formControlName="password">
           </div>
             
           <div>
