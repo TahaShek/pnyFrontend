@@ -8,7 +8,13 @@ import { ProductInterface  } from 'src/app/Shared/Interface/product-interface';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-public productObject:ProductInterface|any
+public productObject:ProductInterface|any={}
+Url='http://localhost:1111/'
+public SelectedSize:any=[]
+public selectedQuantity:Number|any=0
+public stockQuantity:any
+
+
   constructor(
     private readonly ActivatedRoute:ActivatedRoute,
     private readonly ProductService:ProductService
@@ -28,6 +34,28 @@ GetRouterParameterandGetData  (){
      this.ProductService.GetParticularDataByid(parameterId).subscribe((res:any)=>{
       this.productObject=res.result
      })
+}
+
+getSizes(event:any){
+if(event.target.checked){
+  this.SelectedSize.push(event.target.value)
+}
+else{
+  this.SelectedSize=this.SelectedSize.filter((value:any)=>value!=event.target.value)
+}
+}
+
+
+decrementQuantity(){
+  if(this.selectedQuantity>0){
+    this.selectedQuantity --;
+  }
+}
+
+incrementQuantity(){
+  if(this.selectedQuantity===0 || this.selectedQuantity<6){
+this.selectedQuantity++
+  }
 }
 }
 

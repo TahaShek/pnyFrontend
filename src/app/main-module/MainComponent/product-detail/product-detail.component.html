@@ -1,2 +1,31 @@
-<p>product-detail works!</p>
-<h1>{{productObject?.productName}}</h1>
+<!-- <p>product-detail works!</p>
+<h1>{{productObject?.productName}}</h1> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 d-flex justify-content-center">
+            <div>
+                 <div *ngFor="let data of productObject.ImageDetail">
+                     <img  [src]="Url+data?.ImageUrl" alt="">
+                 </div>
+            </div>
+        <div class="col d-flex justify-content-center">
+          <div>
+            <h1>{{productObject.productName}}</h1>
+            <h3>{{productObject.price |currency}}</h3>
+            <div class="cat action" *ngFor="let data of productObject.size">
+                <label>
+                    <input type="checkbox" [value]="data" (click)="getSizes($event)"><span>{{data}}</span>
+                </label>
+            </div>
+            <div>
+                <button class="btn btn-outline-success mx-3" (click)="decrementQuantity()">-</button>
+                <button class="btn btn-outline-success mx-3">{{selectedQuantity}}</button>
+                <button class="btn btn-outline-success mx-3"(click)="incrementQuantity()">+</button>
+            </div>
+          </div>
+        </div>
+
+        </div>
+    </div>
+</div>
