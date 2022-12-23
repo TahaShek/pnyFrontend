@@ -1,5 +1,4 @@
-<!-- <p>product-detail works!</p>
-<h1>{{productObject?.productName}}</h1> -->
+<!-- 
 
 <div class="container">
     <div class="row">
@@ -28,4 +27,48 @@
 
         </div>
     </div>
-</div>
+</div> -->
+<div class="banner-image " >
+    <div class="content">
+    <div class="container text-white">
+     <div class="row d-flex justify-content-center vh-100 align-items-center">
+       <div class="col-md-8 text-center ">
+      <h1 class="text-white fw-bold display-2">BROWSE YOUR SELECTION</h1>
+    </div> 
+       </div>
+     </div>
+    </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7" *ngFor="let data of productObject.ImageDetail">
+                <img [src]="Url+data?.ImageUrl" class="img-fluid" alt="">
+            </div>
+            <div class="col-lg-5">
+                <h3>{{productObject.productName}}</h3>
+                <h6 routerLink="/shop" >Back To catalog</h6>
+                <h6>{{productObject.price |currency}}</h6>
+          <ng-container  *ngFor="let data of productObject.size">
+            <div >
+                <label >
+                    <input type="checkbox" class="mx-1" [value]="data" (click)="getSizes($event)"><span>{{data}}</span>
+                </label>
+            </div>
+          </ng-container>
+          <div>
+            <h6>Porduct Details</h6>
+            <p>{{productObject.description}}</p>
+          </div>
+             <div>
+                <div>
+                    <button class="btn btn-outline-success rounded-pill mx-3" (click)="decrementQuantity()">-</button>
+                    <button class="btn btn-outline-success mx-3">{{selectedQuantity}}</button>
+                    <button class="btn btn-outline-success rounded-pill mx-3"(click)="incrementQuantity()">+</button>
+                </div>
+                
+             </div>
+            </div>
+        </div>
+    </div>
