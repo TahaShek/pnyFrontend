@@ -25,13 +25,14 @@
                                         <div class="card-body">
                                      <img routerLink="/detail/{{data._id}}" [src]="Url+data.ImageDetail[0].ImageUrl" class="img-fluid" alt="">
                                         </div>
-                                        <div class="card-text">
+                                        <div class="card-text text-center">
                                                 <h6>{{data.productName}}</h6>
-                                                <h6>{{data.price}}</h6>
+                                                <h6>{{data.price |currency}}</h6>
+                                        </div>
                                <button class="about text-white btn px-4 p-2">Add To Cart</button>
 
 
-                                        </div>
+                                      
                                 </div>
                         </div>
                 </div>
