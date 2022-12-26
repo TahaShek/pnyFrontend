@@ -43,8 +43,8 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-7" *ngFor="let data of productObject.ImageDetail">
-                <img [src]="Url+data?.ImageUrl" class="img-fluid" alt="">
+            <div class="col-lg-7" >
+                <img [src]="Url+productObject.ImageDetail[0].ImageUrl" class="img-fluid" alt="">
             </div>
             <div class="col-lg-5">
                 <h3>{{productObject.productName}}</h3>
