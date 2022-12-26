@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/Shared/Service/product.service';
 import { ProductInterface  } from 'src/app/Shared/Interface/product-interface';
+import { BUTTONTEXT } from 'src/app/Shared/enums/button-text';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -13,6 +14,7 @@ Url='http://localhost:1111/'
 public SelectedSize:any=[]
 public selectedQuantity:Number|any=0
 public stockQuantity:any
+public enumButtonText=BUTTONTEXT
 
 
   constructor(
