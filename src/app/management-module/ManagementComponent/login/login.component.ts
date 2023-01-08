@@ -37,9 +37,6 @@ LoginForm:FormGroup|any
         this.router.navigate(['/adminModule'])
 
       }
-      else{
-        this.router.navigate([''])
-      }
     })
 
 

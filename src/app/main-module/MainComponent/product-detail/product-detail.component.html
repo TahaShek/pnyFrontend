@@ -69,7 +69,7 @@
                     <span></span>
                 </div>
                 <br>
-                <button class="btn btn-outline-dark" type="button"data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" >{{enumButtonText['Add to Cart']}}</button>
+                <button class="btn btn-outline-dark" type="button" (click)="addToCart()" [attr.data-bs-toggle]="offCanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" >{{enumButtonText['Add to Cart']}}</button>
 
              </div>
             </div>
@@ -90,11 +90,19 @@
 
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div class="offcanvas-header">
-        <h5 id="offcanvasRightLabel">Offcanvas right</h5>
+        <h5 id="offcanvasRightLabel">CART </h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        ...
+        <div>
+            <button class="btn btn-outline-dark rounded-pill mx-3" (click)="decrementQuantity()">-</button>
+            <img class="img-thumbnail w-25 h-25" [src]="Url+productObject?.ImageDetail[0].ImageUrl" alt="">
+            <button class="btn btn-outline-dark rounded-pill mx-3"(click)="incrementQuantity()">+</button>
+            <span></span>
+            <br>
+            <button class="btn btn-outline-dark mx-3">{{selectedQuantity}}</button>
+
+        </div>
       </div>
     </div>
 

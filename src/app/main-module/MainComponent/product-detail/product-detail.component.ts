@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from 'src/app/Shared/Service/product.service';
 import { ProductInterface  } from 'src/app/Shared/Interface/product-interface';
 import { BUTTONTEXT } from 'src/app/Shared/enums/button-text';
+import { ToastrService } from 'ngx-toastr';
+import { LocalStorageService } from 'src/app/Shared/Service/local-storage.service';
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
@@ -15,11 +17,14 @@ public SelectedSize:any=[]
 public selectedQuantity:Number|any=0
 public stockQuantity:any
 public enumButtonText=BUTTONTEXT
+public offCanvas=''
 
 
   constructor(
     private readonly ActivatedRoute:ActivatedRoute,
-    private readonly ProductService:ProductService
+    private readonly ProductService:ProductService,
+    private readonly toasterSevice :ToastrService,
+    private readonly localStorageService:LocalStorageService
     ) { }
 
   ngOnInit(): void {
@@ -50,6 +55,11 @@ else{
 
 decrementQuantity(){
   if(this.selectedQuantity>0){
+    let getDataFromLocalStorage=this.localStorageService.getFromCart()
+    if(getDataFromLocalStorage!==null){
+getDataFromLocalStorage.selectQuantity--;
+this.localStorageService.setItemInLocalStorage(getDataFromLocalStorage)
+    }
     this.selectedQuantity --;
   }
 }
@@ -57,6 +67,38 @@ decrementQuantity(){
 incrementQuantity(){
   if(this.selectedQuantity===0 || this.selectedQuantity<6){
 this.selectedQuantity++
+
+  }
+}
+
+
+addToCart(){
+  if(this.SelectedSize.length <= 0){
+this.toasterSevice.error('select Size')
+
+  }
+  
+  else{
+    this.offCanvas='offcanvas'
+    let{productName,price,_id}=this.productObject
+
+    let processedCartObject={
+      selectedSize:this.SelectedSize,
+      selectQuantity:this.selectedQuantity,
+      productId:_id,
+      productName,price
+    }
+    let processCartArray=[]
+
+    // dekho local storage mae phela sae kch para hua ha ka nae  
+    if (this.localStorageService.getFromCart() !==null){
+   let alreadyValueINlocalStorage=this.localStorageService.getFromCart()
+  alreadyValueINlocalStorage.forEach((element:any) => {
+    processCartArray.push(element)
+  });
+    }
+    processCartArray.push(processedCartObject)
+    this.localStorageService.setItemInLocalStorage(processCartArray)
   }
 }
 }
